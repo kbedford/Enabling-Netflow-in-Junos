@@ -45,12 +45,9 @@ set chassis fpc 0 sampling-instance inline_jflow
 
 ```bash
 set forwarding-options sampling instance inline_jflow input rate 1000
-set forwarding-options sampling instance inline_jflow family inet \
-    output flow-server 172.16.18.72 port 9000
-set forwarding-options sampling instance inline_jflow family inet \
-    output flow-server 172.16.18.72 version-ipfix template vgn_ipfix_v4
-set forwarding-options sampling instance inline_jflow family inet \
-    output inline-jflow source-address 11.0.0.101
+set forwarding-options sampling instance inline_jflow family inet output flow-server 172.16.18.72 port 9000
+set forwarding-options sampling instance inline_jflow family inet output flow-server 172.16.18.72 version-ipfix template vgn_ipfix_v4
+set forwarding-options sampling instance inline_jflow family inet output inline-jflow source-address 11.0.0.101
 ```
 
 Notes:
@@ -302,23 +299,3 @@ If `tcpdump` shows traffic, check:
 
 ---
 
-### 7.4 Quick sanity checklist
-
-When in doubt, run through these:
-
-1. **Flows on router**
-   `show services accounting flow inline-jflow fpc-slot 0` → `Flows Exported` increasing.
-
-2. **Export configuration**
-   `show configuration forwarding-options sampling instance inline_jflow` → correct collector IP/port and source IP.
-
-3. **Interface sampling**
-   `sampling input` on the interfaces where traffic actually arrives.
-
-4. **Packets on collector**
-   `tcpdump -i <iface> port 9000 and host <router-source-ip> -vv`.
-
-5. **Collector processing**
-   `/opt/northstar/logs/netflow.msg` → “sent X documents to elasticsearch” and no persistent error messages.
-
----
