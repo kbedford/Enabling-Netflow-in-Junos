@@ -2,7 +2,7 @@
 
 # Enabling NetFlow/IPFIX Export on Junos (inline jflow → Collector)
 
-This post walks through:
+This post walks through
 
 * The Junos configuration for inline jflow/IPFIX
 * Enabling sampling on interfaces
