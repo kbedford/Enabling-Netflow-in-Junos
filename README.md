@@ -2,6 +2,8 @@
 
 # Enabling NetFlow/IPFIX Export on Junos (inline jflow → Collector)
 
+
+
 In this lab I enabled inline jflow (NetFlow/IPFIX) on a Junos vMX router and exported flows to a Netflow collector (NorthStar Analytics `netflowd`).
 
 This post walks through:
@@ -19,10 +21,10 @@ This post walks through:
 **Router**
 
 * Platform: vMX (`vmx101`)
-* Export source: `11.0.0.101`
-* Collector: `172.16.18.72`
-* Export protocol: IPFIX (inline jflow)
-* Export port: `9000`
+* Export source `11.0.0.101`
+* Collector `172.16.18.72`
+* Export protocol IPFIX (inline jflow)
+* Export port `9000`
 
 **Collector**
 
